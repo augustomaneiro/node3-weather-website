@@ -12,7 +12,8 @@ const forecast = (latitude, longitude, callback) => {
       const temperature = body.currently.temperature;
       const precipProbability = body.currently.precipProbability;
       const todaySummary = body.daily.data[0].summary;
-      callback(undefined, `${todaySummary} It is currently ${temperature} degrees out. There is a ${precipProbability}% chance of rain.`);
+      const humidity = body.daily.data[0].humidity * 100;
+      callback(undefined, `${todaySummary} It is currently ${temperature} degrees out. There is a ${humidity}% of humidity and a ${precipProbability}% chance of rain.`);
     }
   });
 };
